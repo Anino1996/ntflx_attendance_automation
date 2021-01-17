@@ -30,18 +30,18 @@ def find_check_in_url(driver):
 		print('Target link found')
 	else:
 		print(listed_txt[-1])
-	return target
+	return target, listed_txt[-1]
 
 
 def check_into_class(target, driver):
 	target.click()
-	time.sleep(5)
+	time.sleep(10)
 	check_logged=check_logged_in(driver)
 	if not check_logged[0]:
-		print("Check in successful")
-	
+		return 'Check in successful!'
+		
 	else:
-		print("Error occurred. Check in unsuccessful!")
+		return "Error occurred. Check in unsuccessful!"
 
 
 
