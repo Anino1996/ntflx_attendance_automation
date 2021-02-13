@@ -1,0 +1,13 @@
+#!/bin/bash
+
+if [$LOGNAME='anino1996']
+then
+   cd ~/Python/attendance_automation
+else
+   cd /home/pi/Documents/attendance_automation
+fi
+
+python3 ntflxLogin.py
+
+echo "all done!!"
+

@@ -34,15 +34,28 @@ def find_check_in_url(driver):
 
 
 def check_into_class(target, driver):
-	target.click()
-	time.sleep(10)
-	check_logged=check_logged_in(driver)
-	if not check_logged[0]:
-		return 'Check in successful!'
-		
-	else:
-		return "Error occurred. Check in unsuccessful!"
+	tries=2
+	while tries>0:
+		target.click()
+		time.sleep(5)
+		check_logged=check_logged_in(driver)
+		if not check_logged[0]:
+			return 'Check in successful!'
+		tries-=1
+	
+	return "Error occurred. Check in unsuccessful!"
 
-
+def safe_click(target, driver):
+	tries=2
+	curr=driver.current_url
+	while tries>0:
+		target.click()
+		time.sleep(2)
+		if load_confirmed(driver, curr):
+			print("Survey started")
+			return True
+		tries-=1
+	print("Survey start unsuccessful")
+	return False
 
 

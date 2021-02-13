@@ -3,13 +3,18 @@ from checkIn import *
 import json
 import os
 from mailFdbck import communicate
-# import time
+from survey import *
+# imort time
 
 def main():
+	if os.environ['LOGNAME']=='anino1996':
+		os.chdir('/Users/anino1996/Python/attendance_automation')
+	else:
+		os.chdir("/home/pi/Documents/attendance_automation")
 
-	os.chdir("/home/pi/Documents/attendance_automation")
-
-#DRIVER_PATH='/Users/anino1996/Python/attendance_automation/chromedriver'
+	# DRIVER_PATH='/Users/anino1996/Python/attendance_automation/chromedriver'
+	
+	DRIVER_PATH=os.path.join(os.getcwd(),'chromedriver')
 	options=webdriver.ChromeOptions()
 	options.headless=True
 
@@ -19,7 +24,7 @@ def main():
 	mail=cred.get('mail', None)
 	pwrd=cred.get('pwrd', None)
 
-	browserDriver=webdriver.Chrome(options=options)
+	browserDriver=webdriver.Chrome(executable_path=DRIVER_PATH,options=options)
 
 	browserDriver.get("https://www.bootcampspot.com")
 	
@@ -41,10 +46,18 @@ def main():
 			
 			else:
 				print("Login Successful!")
+				if 'feedback' in browserDriver.current_url:
+					survey_started=start_survey(browserDriver)
+					if survey_started:
+						survey_fdbck=complete_survey(browserDriver)
+						if survey_fdbck!='Success':
+							fdbck=survey_fdbck
+							communicate(fdbck)
+							return 		
 				check_in_element,fdbck=find_check_in_url(browserDriver)
 				if check_in_element:
 					fdbck=check_into_class(check_in_element, browserDriver)
-					
+
 			communicate(fdbck)
 				
 if __name__=='__main__':

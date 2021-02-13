@@ -15,10 +15,10 @@ def adminAlert(fdbck):
 
 def logData(fdbck):
 	old=''
-	if 'loginLogs.log' in os.listdir('/home/pi/Documents/logs'):
-		with open('/home/pi/Documents/logs/loginLogs.log','r') as file:
+	if 'loginLogs.log' in os.listdir('/Users/anino1996/Python/logs'):
+		with open('/Users/anino1996/Python/logs/loginLogs.log','r') as file:
 			old=file.read()
-	with open('/home/pi/Documents/logs/loginLogs.log','w') as file:
+	with open('/Users/anino1996/Python/logs/loginLogs.log','w') as file:
 		file.write(f'{datetime.datetime.now()} - {fdbck}\n{old}')
 
 def communicate(fdbck):
