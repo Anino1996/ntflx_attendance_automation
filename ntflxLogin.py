@@ -18,8 +18,8 @@ def main():
 	options=webdriver.ChromeOptions()
 	options.headless=True
 
-	with open('credentials.json', 'r') as file:
-		cred=json.load(file)
+	
+	cred=os.environ['NTFLX_LOGIN']
 
 	mail=cred.get('mail', None)
 	pwrd=cred.get('pwrd', None)
