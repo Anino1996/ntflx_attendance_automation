@@ -1,4 +1,3 @@
-
 import time
 def check_logged_in(driver):
 	latest_class_card=driver.find_element_by_class_name("card-with-title")
@@ -49,6 +48,7 @@ def safe_click(target, driver):
 	tries=2
 	curr=driver.current_url
 	while tries>0:
+		print(f'Try {2-tries+1}')
 		target.click()
 		time.sleep(2)
 		if load_confirmed(driver, curr):

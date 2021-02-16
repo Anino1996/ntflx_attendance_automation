@@ -16,10 +16,10 @@ def main():
 	
 	DRIVER_PATH=os.path.join(os.getcwd(),'chromedriver')
 	options=webdriver.ChromeOptions()
-	options.headless=True
+	options.headless=False
 
 	
-	cred=os.environ['NTFLX_LOGIN']
+	cred=json.loads(os.environ['NTFLX_LOGIN'])
 
 	mail=cred.get('mail', None)
 	pwrd=cred.get('pwrd', None)
@@ -57,7 +57,7 @@ def main():
 				check_in_element,fdbck=find_check_in_url(browserDriver)
 				if check_in_element:
 					fdbck=check_into_class(check_in_element, browserDriver)
-
+			print(fdbck)
 			communicate(fdbck)
 				
 if __name__=='__main__':
