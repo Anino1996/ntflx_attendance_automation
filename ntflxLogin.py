@@ -7,24 +7,28 @@ from survey import *
 # imort time
 
 def main():
+	options=webdriver.ChromeOptions()
+	options.headless=True
+
 	if os.environ['LOGNAME']=='anino1996':
 		os.chdir('/Users/anino1996/Python/attendance_automation')
+		DRIVER_PATH=os.path.join(os.getcwd(),'chromedriver')
+		browserDriver=webdriver.Chrome(executable_path=DRIVER_PATH,options=options)
+		
 	else:
 		os.chdir("/home/pi/Documents/attendance_automation")
+		browserDriver=webdriver.Chrome(options=options)
+
 
 	# DRIVER_PATH='/Users/anino1996/Python/attendance_automation/chromedriver'
 	
-	DRIVER_PATH=os.path.join(os.getcwd(),'chromedriver')
-	options=webdriver.ChromeOptions()
-	options.headless=False
-
 	
 	cred=json.loads(os.environ['NTFLX_LOGIN'])
 
 	mail=cred.get('mail', None)
 	pwrd=cred.get('pwrd', None)
 
-	browserDriver=webdriver.Chrome(executable_path=DRIVER_PATH,options=options)
+	# browserDriver=webdriver.Chrome(executable_path=DRIVER_PATH,options=options)
 
 	browserDriver.get("https://www.bootcampspot.com")
 	
