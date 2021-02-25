@@ -5,13 +5,16 @@ def check_logged_in(driver):
 	all_listed_text=[i.text for i in all_listed]
 
 	if 'Check In To Class' in all_listed_text:
-		target=next(filter(lambda x: x.text=='Check In To Class',all_listed))
+		target_item=next(filter(lambda x: x.text=='Check In To Class',all_listed))
+		target=target_item.find_element_by_tag_name('a')
 		
-		return target,all_listed_text
 
 	else:
-		return None,all_listed_text
+		target=None
 
+	return target,all_listed_text
+
+	
 def load_confirmed(driver, prev):
 	status=False
 	cnt=0

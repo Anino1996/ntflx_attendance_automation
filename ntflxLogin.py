@@ -8,7 +8,7 @@ from survey import *
 
 def main():
 	options=webdriver.ChromeOptions()
-	options.headless=True
+	options.headless=False
 
 	if os.environ['LOGNAME']=='anino1996':
 		os.chdir('/Users/anino1996/Python/attendance_automation')
