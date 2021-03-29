@@ -14,7 +14,7 @@ GUIDELINES
     </li>
 
 <li><p>Add the following line:</p>
-    <p>export NTFLX_LOGIN = '{"mail":"<yourSchoolEmailAddress>", "pwrd":"<yourPassword>"}'</p>
+    <p>export NTFLX_LOGIN = '{"mail":"'<yourSchoolEmailAddress>'", "pwrd":"'<yourPassword>'"}'</p>
 </li>
     
 <li>Install selenium by running "pip install Selenium" in the command line. </li>
