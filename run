@@ -11,7 +11,7 @@ if [ "$USER" == "anino1996" ]; then
 else 
 	echo "Running on Anino's Pi";
 	cd /home/pi/Documents/attendance_automation;
-	/usr/bin/python3 ntflxLogin.py;
+	python3 ntflxLogin.py;
 fi;
 
 deactivate;
