@@ -3,12 +3,15 @@ from checkIn import *
 import json
 import os
 from mailFdbck import communicate
+from dotenv import load_dotenv
 from survey import *
 # imort time
 
+load_dotenv('.env')
+
 def main():
 	options=webdriver.ChromeOptions()
-	options.headless=False
+	options.headless=True
 
 	if os.environ['LOGNAME']=='anino1996':
 		os.chdir('/Users/anino1996/Python/attendance_automation')
@@ -23,7 +26,7 @@ def main():
 	# DRIVER_PATH='/Users/anino1996/Python/attendance_automation/chromedriver'
 	
 	
-	cred=json.loads(os.environ['NTFLX_LOGIN'])
+	cred=json.loads(os.getenv('NTFLXLOGIN'))
 
 	mail=cred.get('mail', None)
 	pwrd=cred.get('pwrd', None)

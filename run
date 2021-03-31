@@ -1,13 +1,21 @@
 #!/bin/bash
 
-if [$LOGNAME='anino1996']
-then
-   cd ~/Python/attendance_automation
-else
-   cd /home/pi/Documents/attendance_automation
-fi
+source att_auto/bin/activate
 
-python3 ntflxLogin.py
+if [ "$USER" == "anino1996" ]; then
 
-echo "all done!!"
+	echo "Running on Anino's Mac";
+	cd ~/Python/attendance_automation;
+	/usr/bin/python3 ntflxLogin.py;
+
+else 
+	echo "Running on Anino's Pi";
+	cd /home/pi/Documents/attendance_automation;
+	/usr/bin/python3 ntflxLogin.py;
+fi;
+
+echo "All done";
+
+
+exit;
 
