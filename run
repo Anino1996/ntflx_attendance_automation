@@ -1,23 +1,34 @@
 #!/bin/bash
 
-source att_auto/bin/activate
 
 if [ "$USER" == "anino1996" ]; then
-
 	echo "Running on Anino's Mac";
 	cd ~/Python/attendance_automation;
-	/usr/bin/python3 ntflxLogin.py;
 
-else 
+else
+
 	echo "Running on Anino's Pi";
 	cd /home/pi/Documents/attendance_automation;
-	/usr/bin/python3 ntflxLogin.py;
+
 fi;
+
+APP_PATH=$(pwd)/att_auto/bin/python3;
+source ./att_auto/bin/activate;
+
+if [ "$(which python3)" == "$APP_PATH" ]; then
+
+	echo "Virtual Environment Activated";
+
+else
+
+	echo "Failed to activate virtual environment";
+
+fi;
+./att_auto/bin/python3 ntflxLogin.py;
 
 deactivate;
 
 echo "All done";
-
 
 exit;
 
