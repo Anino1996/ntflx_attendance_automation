@@ -5,3 +5,4 @@ credentials.json
 .env
 att_auto/
 mailFdbck.py
+*.html
