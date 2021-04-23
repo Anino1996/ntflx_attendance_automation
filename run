@@ -1,6 +1,7 @@
 #!/bin/bash
+# Script that is used to run automated login
 
-
+# Check if app is running on local machine or RPi
 if [ "$USER" == "anino1996" ]; then
 	echo "Running on Anino's Mac";
 	cd ~/Python/attendance_automation;
@@ -12,6 +13,7 @@ else
 
 fi;
 
+# Change path to application directory and activate virtual environment
 APP_PATH=$(pwd)/att_auto/bin/python3;
 source ./att_auto/bin/activate;
 
@@ -24,6 +26,8 @@ else
 	echo "Failed to activate virtual environment";
 
 fi;
+
+# Run login application
 ./att_auto/bin/python3 ntflxLogin.py;
 
 deactivate;
