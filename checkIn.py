@@ -1,5 +1,15 @@
 import time
+
+
+################################################
+# Utility functions used in navigating website #
+#	and performing key functions	       #
+################################################
+
+# Check if class check-in was successful
 def check_logged_in(driver):
+	
+	# Look for the chek into class link and return it if present else return None
 	latest_class_card=driver.find_element_by_class_name("card-with-title")
 	all_listed=latest_class_card.find_elements_by_tag_name("li")
 	all_listed_text=[i.text for i in all_listed]
@@ -14,7 +24,10 @@ def check_logged_in(driver):
 
 	return target,all_listed_text
 
-	
+
+# Check to ensure that new page has loaded
+# Check if current url is different from the saved url. 
+# Allow 10 seconds to account for slower internet connections
 def load_confirmed(driver, prev):
 	status=False
 	cnt=0
@@ -26,6 +39,7 @@ def load_confirmed(driver, prev):
 	time.sleep(5)
 	return status
 
+# Locate and return check-in link and text
 def find_check_in_url(driver):
 	target,listed_txt=check_logged_in(driver)
 	if target:
@@ -35,6 +49,7 @@ def find_check_in_url(driver):
 	return target, listed_txt[-1]
 
 
+# Click on the located link
 def check_into_class(target, driver):
 	tries=2
 	while tries>0:
@@ -47,6 +62,9 @@ def check_into_class(target, driver):
 	
 	return "Error occurred. Check in unsuccessful!"
 
+
+# Start weekly survey 
+# Click on start survey button
 def safe_click(target, driver):
 	tries=2
 	curr=driver.current_url
