@@ -21,12 +21,12 @@ APP_PATH=$(pwd)/att_auto/bin/python3;
 if [ ! -d $(pwd)/att_auto ]; then
 	echo "Creating virtual environment";
 	virtualenv -p python3 att_auto;
-	echo "Virtual environment created!";
+	echo "Virtual Environment Created!";
 fi;
 
 
 
-# Activate virutal environment
+# Activate virtual environment
 source ./att_auto/bin/activate;
 
 # Check if virtual environment has been successfully activated
