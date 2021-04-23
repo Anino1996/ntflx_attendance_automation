@@ -15,11 +15,36 @@ fi;
 
 # Change path to application directory and activate virtual environment
 APP_PATH=$(pwd)/att_auto/bin/python3;
+
+# Check if virtual environment exists else create it and install all dependencies
+
+if [ ! -d $(pwd)/att_auto ]; then
+	echo "Creating virtual environment";
+	virtualenv -p python3 att_auto;
+	echo "Virtual environment created!";
+fi;
+
+
+
+# Activate virutal environment
 source ./att_auto/bin/activate;
 
+# Check if virtual environment has been successfully activated
 if [ "$(which python3)" == "$APP_PATH" ]; then
 
 	echo "Virtual Environment Activated";
+	
+	# Check if dependencies are installed
+	if !grep -q selenium <<< $(pip list); then
+		echo "Installing dependencies";
+		pip install -r requirements.txt;
+		echo "Dependencies installed.";
+	fi;
+	
+	# Run login application
+	./att_auto/bin/python3 ntflxLogin.py;
+
+	deactivate;
 
 else
 
@@ -27,10 +52,6 @@ else
 
 fi;
 
-# Run login application
-./att_auto/bin/python3 ntflxLogin.py;
-
-deactivate;
 
 echo "All done";
 
