@@ -35,7 +35,7 @@ if [ "$(which python3)" == "$APP_PATH" ]; then
 	echo "Virtual Environment Activated";
 	
 	# Check if dependencies are installed
-	if !grep -q selenium <<< $(pip list); then
+	if ! grep -q selenium <<< $(pip list); then
 		echo "Installing dependencies";
 		pip install -r requirements.txt;
 		echo "Dependencies installed.";
