@@ -27,7 +27,7 @@ def check_logged_in(driver):
 
 # Check to ensure that new page has loaded
 # Check if current url is different from the saved url. 
-# Allow 10 seconds to account for slower internet connections
+# Wait 5 seconds to account for slower internet connections
 def load_confirmed(driver, prev):
 	status=False
 	cnt=0
