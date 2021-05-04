@@ -9,7 +9,7 @@ import time
 # Check if class check-in was successful
 def check_logged_in(driver):
 	
-	# Look for the chek into class link and return it if present else return None
+	# Look for the check into class link and return it if present else return None
 	latest_class_card=driver.find_element_by_class_name("card-with-title")
 	all_listed=latest_class_card.find_elements_by_tag_name("li")
 	all_listed_text=[i.text for i in all_listed]
