@@ -16,7 +16,7 @@ def main():
 	options=webdriver.ChromeOptions()
 	options.headless=True
 
-	# Change to project directory (Takes care of directory issues when running file directory)
+	# Change to project directory (Takes care of directory issues when running out of file directory)
 	if os.environ['LOGNAME']=='anino1996':
 		os.chdir('/Users/anino1996/Python/attendance_automation')
 		DRIVER_PATH=os.path.join(os.getcwd(),'chromedriver')
