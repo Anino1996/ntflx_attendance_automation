@@ -13,6 +13,20 @@ else
 
 fi;
 
+#Check for credentials
+echo "Checking if credentials exist...."
+if [ ! -f $(pwd)/.env ]; then 
+	echo "No credentials available. Please set up your credentials";
+	echo "BootcampSpot email: "
+	read email;
+	echo "Password: "
+	read password;
+	echo NTFLXLOGIN={\"mail\":\"$email\", \"pwrd\":\"$password\"} > $(pwd)/.env;
+	echo "Credentials created!";
+else 
+	echo "Credentials found!"
+fi;
+
 # Change path to application directory and activate virtual environment
 APP_PATH=$(pwd)/att_auto/bin/python3;
 
